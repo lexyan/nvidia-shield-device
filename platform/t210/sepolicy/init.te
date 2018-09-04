@@ -13,3 +13,11 @@
 # limitations under the License.
 
 allow init self:capability sys_module;
+
+allow init dvb_device:{ file lnk_file } rw_file_perms;
+allow init camera_device:{ file lnk_file } rw_file_perms;
+
+allow init dvb_file:{ file lnk_file } rw_file_perms;
+allow init dvb_file:dir { setattr getattr rw_dir_perms mounton };
+
+allow init firmware_file:dir mounton;

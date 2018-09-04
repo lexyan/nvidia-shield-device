@@ -57,3 +57,13 @@
 
 # Input device sysfs
 /sys/devices/platform/gpio-keys.48/input/input0(/.*)?	u:object_r:sysfs_input_dev:s0
+
+
+# DVB API device nodes
+/dev/dvb/*                  u:object_r:dvb_device:s0
+
+#############################
+# dvb firmware
+/data/firmware(/.*)?                  u:object_r:dvb_file:s0
+/data/dvb(/.*)?                  u:object_r:dvb_file:s0
+/data/dvb/firmware(/.*)?                  u:object_r:dvb_file:s0

@@ -1,0 +1,2 @@
+# Allow kernel to request and insert modules (ko files aka drivers)
+allow kernel self:system module_request;
