@@ -3,5 +3,4 @@ allow untrusted_app dvb_device:dir r_dir_perms;
 allow untrusted_app device:dir r_dir_perms;
 allow untrusted_app dvb_device:file r_file_perms;
 allow untrusted_app dvb_device:chr_file rw_file_perms;
-allow untrusted_app camera_device:dir r_dir_perms;
-allow untrusted_app camera_device:chr_file rw_file_perms;
+
