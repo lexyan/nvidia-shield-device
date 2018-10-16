@@ -305,19 +305,6 @@ class FWCheck():
             print_info(tag, "fw version mismatch, fw on device: " + result)
             return (FW_NOT_APPROVED, result)
 
-    def check_xusb_fw(self, tag, versions, exception):
-        matching_phrase = "Firmware timestamp"
-        cmd = "adb shell dmesg | grep -m 1 'tegra-xhci: " + matching_phrase + "'"
-        result = run_cmd(tag, cmd)
-        if matching_phrase in result:
-            result = matching_phrase + result.split(matching_phrase, 1)[1]
-        if check_fw_version(result, versions):
-            print_info(tag, "fw version match")
-            return (PASS, result)
-        else:
-            print_info(tag, "fw version mismatch, fw on device: " + result)
-            return (FW_NOT_APPROVED, result)
-
     def check_modem_fw(self, tag, versions, exception):
         cmd = "adb shell getprop gsm.version.baseband"
         result = run_cmd(tag, cmd)

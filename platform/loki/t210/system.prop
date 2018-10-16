@@ -8,7 +8,7 @@ pbc.pbat.slope = 1.5
 pbc.pbat.intercept = -7
 
 #audio specific properties
-ro.audio.usb.period_us = 2000
+ro.audio.usb.period_us = 5000
 
 # VRR properties
 # SF will not activate VRR because ro.sf.vrr.enabled 0

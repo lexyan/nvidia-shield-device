@@ -62,6 +62,34 @@ $(LOCAL_BUILT_MODULE): \
 $(LOCAL_BUILT_MODULE): | $(ACP)
 	$(transform-generated-source)
 
+include $(NVIDIA_DEFAULTS)
+
+LOCAL_MODULE        := rp4
+LOCAL_MODULE_SUFFIX := .blob
+LOCAL_MODULE_CLASS  := EXECUTABLES
+LOCAL_MODULE_PATH   := $(PRODUCT_OUT)
+
+include $(NVIDIA_BASE)
+include $(BUILD_SYSTEM)/base_rules.mk
+include $(NVIDIA_POST)
+
+#
+# Invoke script to generate blobs for current product
+#
+# These direct 3 dependencies make up the command line - order is important!
+$(LOCAL_BUILT_MODULE): PRIVATE_CUSTOM_TOOL = $^ $@
+$(LOCAL_BUILT_MODULE): \
+	$(LOCAL_PATH)/genrp4blob.sh \
+	$(LOCAL_PATH)/blob/$(word 1,$(subst _, ,$(TARGET_PRODUCT)))/rp4_config_file \
+	$(_nvblob_v2_path)
+
+# Dependencies are incomplete - config file lists more files
+# To ensure correctness we must mark it as phony target
+.PHONY: $(LOCAL_BUILT_MODULE)
+
+$(LOCAL_BUILT_MODULE): | $(ACP)
+	$(transform-generated-source)
+
 # clear variables
 _nvblob_v2_path :=
 

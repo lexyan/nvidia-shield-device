@@ -37,8 +37,7 @@ PRODUCT_COPY_FILES += \
     $(NVFLASH_FILES_PATH)/partition_tables/jetson/flash_t210_jetson_android_sdmmc.xml:flash_t210_android_sdmmc_fb.xml
 else
 PRODUCT_COPY_FILES += \
-    $(NVFLASH_FILES_PATH)/flash_t210_android_sdmmc_fb.xml:flash_t210_android_sdmmc_fb.xml \
-    $(call add-to-product-copy-files-if-exists, device/nvidia/tegraflash/t210/rp4_binaries/rp4.bin:rp4.bin)
+    $(NVFLASH_FILES_PATH)/flash_t210_android_sdmmc_fb.xml:flash_t210_android_sdmmc_fb.xml
 endif
 
 NVFLASH_FILES_PATH :=

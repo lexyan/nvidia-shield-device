@@ -67,6 +67,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     NvRegistration
 
+PRODUCT_PACKAGES += \
+    flynnd
+
 ## common for mp and diag images, for a single sku.
 $(call inherit-product, $(LOCAL_PATH)/darcy_common.mk)
 

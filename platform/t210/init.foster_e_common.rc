@@ -32,6 +32,11 @@ on boot
     # Lower console loglevel to reduce number of printk messages to console
     write /proc/sys/kernel/printk "4 7 1 7 3"
 
+on boot && property:ro.build.type=user
+    # Disable console logs in user build, print KERN_EMERG messages only
+    setprop debug.kernel.enable_console_logs false
+    write /dev/kmsg "Disabling kernel console prints. Prints can be enabled via the developer menu"
+
 on post-fs-data
 # Set Foster as console mode
     setprop persist.sys.display.resolution 1920x1080
@@ -98,6 +103,12 @@ on post-fs-data
 
 on property:sys.boot_completed=1
     start factory_tests
+
+on property:debug.kernel.enable_console_logs=true && property:ro.build.type=user
+    write /proc/sys/kernel/printk "4 7 1 7 3"
+
+on property:debug.kernel.enable_console_logs=false && property:ro.build.type=user
+    write /proc/sys/kernel/printk "1 7 1 7 3"
 
 # override cpuset cpus to 0-3, mems to 0
 on init

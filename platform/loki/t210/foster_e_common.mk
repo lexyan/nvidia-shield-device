@@ -73,6 +73,11 @@ PRODUCT_PACKAGES += \
     BluetoothMidiService \
     cac_log_dumper
 
+ifeq ($(NV_ANDROID_FRAMEWORK_ENHANCEMENTS),TRUE)
+PRODUCT_PACKAGES += \
+    rp4
+endif
+
 TARGET_SYSTEM_PROP    += device/nvidia/platform/loki/t210/system.prop
 
 HDCP_POLICY_CHECK := true
@@ -98,6 +103,9 @@ LOCAL_FW_CHECK_TOOL_PATH=device/nvidia/common/fwcheck
 LOCAL_FW_XML_PATH=vendor/nvidia/loki/skus
 PRODUCT_COPY_FILES += $(call add-to-product-copy-files-if-exists, $(LOCAL_FW_XML_PATH)/fw_version.xml:$(TARGET_COPY_OUT_VENDOR)/etc/fw_version.xml) \
 	$(call add-to-product-copy-files-if-exists, $(LOCAL_FW_CHECK_TOOL_PATH)/fw_check.py:fw_check.py)
+
+PRODUCT_COPY_FILES += \
+    device/nvidia/platform/loki/gpio_ir_recv.idc:system/usr/idc/gpio_ir_recv.idc
 
 # Foster LED Firmware bin
 LOCAL_FOSTER_LED_FW_PATH=vendor/nvidia/foster/firmware/P1961-Cypress/ReleasedHexFiles/Application

@@ -55,4 +55,40 @@
             <instance>default</instance>
         </interface>
     </hal>
+    <hal format="hidl">
+        <name>android.hardware.wifi</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IWifi</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.wifi.supplicant</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>ISupplicant</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+       <name>vendor.nvidia.hardware.bluetooth</name>
+       <transport arch="32+64">passthrough</transport>
+       <version>1.0</version>
+       <interface>
+         <name>IBluetoothHci</name>
+         <instance>default</instance>
+       </interface>
+    </hal>
+    <hal>
+        <name>vendor.nvidia.hardware.flynn</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IFlynn</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
 </manifest>
